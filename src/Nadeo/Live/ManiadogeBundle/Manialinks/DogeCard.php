@@ -19,6 +19,6 @@ class DogeCard extends LabelBox
     function __construct()
     {
         parent::__construct();
-        $this->setSizen(64, 64);
+        $this->setSizen(50, 50);
     }
 }

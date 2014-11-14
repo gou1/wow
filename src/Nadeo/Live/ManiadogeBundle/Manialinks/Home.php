@@ -13,8 +13,8 @@ class Home extends \Manialib\Manialink\Elements\Manialink
 
         $frame = (new \Manialib\Manialink\Elements\Frame())
             ->setSizen(320, 180)
-            ->setLayout((new \Manialib\Manialink\Layouts\Flow())->setMargin(10, 10))
-            ->setPosn(-150, 80)
+            ->setLayout((new \Manialib\Manialink\Layouts\Flow())->setMargin(5, 5))
+            ->setPosn(-155, 80)
             ->appendTo($this);
 
         foreach ($doges as $doge) {

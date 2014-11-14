@@ -1,0 +1,4 @@
+maniadoge:
+    resource: "@ManiadogeBundle/Resources/config/routing.yml"
+    prefix:   /
+

@@ -5,10 +5,14 @@
     php bin/console doctrine:generate:entity
 
 > ManiadogeBundle:Doge
+
 > yml mapping
+
 > "name" string(75)
+
 > "imageUrl" string(255)
 
     php bin/console doctrine:generate:entities ManiadogeBundle
     php bin/console doctrine:database:create
     php bin/console doctrine:schema:update --force
+

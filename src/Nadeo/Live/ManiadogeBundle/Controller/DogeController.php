@@ -22,7 +22,7 @@ class DogeController extends Controller
 
     function indexAction()
     {
-        $doges = $this->getDogeRepo()->findAll();
+        $doges = $this->getDogeRepo()->findBy([], ['id' => 'DESC']);
         return $this->render('ManiadogeBundle:Doge:index.xml.php', ['doges' => $doges],
                 new Response('', 200, ['Content-Type' => 'application/xml']));
     }

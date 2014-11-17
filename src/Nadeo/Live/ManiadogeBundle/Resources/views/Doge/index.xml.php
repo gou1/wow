@@ -16,6 +16,12 @@ $frame = (new Frame())
     ->setPosn(-155, 80)
     ->appendTo($manialink);
 
+(new DogeCard())
+    ->appendTo($frame)
+    ->getLabel()
+        ->setText('Woof! Woof!')
+        ->setUrl($view['router']->generate('maniadoge_create', [], true));
+
 foreach ($doges as $doge) {
     DogeCard::fromEntity($doge)
         ->appendTo($frame)

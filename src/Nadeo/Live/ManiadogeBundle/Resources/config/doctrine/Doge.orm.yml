@@ -1,6 +1,5 @@
 Nadeo\Live\ManiadogeBundle\Entity\Doge:
     type: entity
-    table: null
     id:
         id:
             type: integer
@@ -15,4 +14,3 @@ Nadeo\Live\ManiadogeBundle\Entity\Doge:
         imageUrl:
             type: string
             length: 255
-    lifecycleCallbacks: {  }

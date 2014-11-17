@@ -1,5 +1,6 @@
 Nadeo\Live\ManiadogeBundle\Entity\Doge:
     type: entity
+    repositoryClass: Nadeo\Live\ManiadogeBundle\Entity\DogeRepository
     id:
         id:
             type: integer

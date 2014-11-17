@@ -2,10 +2,12 @@ maniadoge_index:
     path:     /
     defaults: { _controller: ManiadogeBundle:Doge:index }
 
+maniadoge_create:
+    path:     /create
+    defaults: { _controller: ManiadogeBundle:Doge:create }    
+
 maniadoge_doge:
     path:     /{id}
     defaults: { _controller: ManiadogeBundle:Doge:doge }
     
-maniadoge_create:
-    path:     /woof/woof/{name}/{imageUrl}
-    defaults: { _controller: ManiadogeBundle:Doge:create }    
+

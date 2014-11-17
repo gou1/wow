@@ -4,11 +4,10 @@ namespace Nadeo\Live\ManiadogeBundle\Controller;
 
 use Doctrine\Common\Persistence\ObjectRepository;
 use Nadeo\Live\ManiadogeBundle\Entity\Doge;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class DogeController extends Controller
 {
@@ -37,17 +36,27 @@ class DogeController extends Controller
                 new Response('', 200, ['Content-Type' => 'application/xml']));
     }
 
-    function createAction($name, $imageUrl)
+    function createAction(Request $request)
     {
         $doge = new Doge();
-        $doge->setName($name);
-        $doge->setImageUrl($imageUrl);
 
-        $em = $this->container->get('doctrine.orm.entity_manager');
+        $form = $this->createFormBuilder($doge)
+            ->add('name', 'text')
+            ->add('imageUrl', 'text')
+            ->add('save', 'submit', array('label' => 'Create Task'))
+            ->getForm();
 
-        $em->persist($doge);
-        $em->flush();
+        $form->handleRequest($request);
 
-        return $this->redirect($this->generateUrl('maniadoge_index'));
+        if ($form->isValid()) {
+            $em = $this->container->get('doctrine.orm.entity_manager');
+
+            $em->persist($doge);
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('maniadoge_index', [], true));
+        }
+
+        return $this->render('ManiadogeBundle:Doge:create.html.php', ['form' => $form->createView()]);
     }
 }

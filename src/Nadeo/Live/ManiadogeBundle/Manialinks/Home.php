@@ -2,18 +2,23 @@
 
 namespace Nadeo\Live\ManiadogeBundle\Manialinks;
 
-class Home extends \Manialib\Manialink\Elements\Manialink
+use Manialib\Manialink\Elements\Frame;
+use Manialib\Manialink\Elements\Manialink;
+use Manialib\Manialink\Elements\Timeout;
+use Manialib\Manialink\Layouts\Flow;
+
+class Home extends Manialink
 {
 
     function __construct(array $doges)
     {
         parent::__construct();
 
-        $this->appendChild(new \Manialib\Manialink\Elements\Timeout());
+        $this->appendChild(new Timeout());
 
-        $frame = (new \Manialib\Manialink\Elements\Frame())
+        $frame = (new Frame())
             ->setSizen(320, 180)
-            ->setLayout((new \Manialib\Manialink\Layouts\Flow())->setMargin(5, 5))
+            ->setLayout((new Flow())->setMargin(5, 5))
             ->setPosn(-155, 80)
             ->appendTo($this);
 

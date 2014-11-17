@@ -10,13 +10,11 @@ use Nadeo\Live\ManiadogeBundle\Manialinks\Home;
 class DogeController
 {
     /**
-     *
      * @var EntityManager
      */
     protected $em;
 
     /**
-     *
      * @var RendererInterface
      */
     protected $renderer;

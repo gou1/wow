@@ -7,6 +7,8 @@ use Nadeo\Live\ManiadogeBundle\Entity\Doge;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 class DogeController extends Controller
 {
@@ -22,15 +24,15 @@ class DogeController extends Controller
     function indexAction()
     {
         $doges = $this->getDogeRepo()->findAll();
-        return $this->render('ManiadogeBundle:Doge:index.xml.php', ['doges' => $doges], new Response('', 200, ['Content-Type' => 'application/xml']));
+        return $this->render('ManiadogeBundle:Doge:index.xml.php', ['doges' => $doges],
+                new Response('', 200, ['Content-Type' => 'application/xml']));
     }
 
-    function dogeAction($id)
+    /**
+     * @ParamConverter("doge", class="ManiadogeBundle:Doge")
+     */
+    function dogeAction(Doge $doge)
     {
-        $doge = $this->getDogeRepo()->find($id);
-        if (!$doge) {
-            throw new NotFoundHttpException('Wow no doge');
-        }
         return $this->render('ManiadogeBundle:Doge:doge.xml.php', ['doge' => $doge],
                 new Response('', 200, ['Content-Type' => 'application/xml']));
     }

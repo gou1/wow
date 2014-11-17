@@ -81,3 +81,4 @@ class Doge
         return $this->imageUrl;
     }
 }
+

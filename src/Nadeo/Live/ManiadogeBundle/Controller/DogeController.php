@@ -17,7 +17,7 @@ class DogeController extends Controller
      */
     protected function getDogeRepo()
     {
-        return $this->container->get('doctrine.orm.entity_manager')->getRepository(Doge::class);
+        return $this->getDoctrine()->getManager()->getRepository(Doge::class);
     }
 
     function indexAction()
@@ -49,7 +49,7 @@ class DogeController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            $em = $this->container->get('doctrine.orm.entity_manager');
+            $em = $this->getDoctrine()->getManager();
 
             $em->persist($doge);
             $em->flush();

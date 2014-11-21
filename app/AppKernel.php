@@ -16,11 +16,13 @@ class AppKernel extends Kernel
             new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
-            new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
-            new \Manialib\ManialibBundle\ManialibBundle(),
+            // Added bundles compared to Symfony Standard Edition
+            new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
+            new JMS\SerializerBundle\JMSSerializerBundle(),
+            new Manialib\ManialibBundle\ManialibBundle(),
+            // App bundle
             new Nadeo\Live\ManiadogeBundle\ManiadogeBundle(),
-            
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

@@ -22,6 +22,7 @@
         "sensio/framework-extra-bundle": "~3.0",
         "incenteev/composer-parameter-handler": "~2.0",
         "manialib/manialib-bundle": "~4.0",
+        "jms/serializer-bundle": "0.13.0",
         "doctrine/doctrine-fixtures-bundle": "2.2.*"
     },
     "require-dev": {
@@ -48,6 +49,7 @@
     "config": {
         "bin-dir": "bin"
     },
+    "preferred-install": "dist",
     "minimum-stability": "dev",
     "extra": {
         "symfony-app-dir": "app",

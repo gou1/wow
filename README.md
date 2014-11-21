@@ -25,7 +25,4 @@
 
     php bin/console doctrine:fixtures:load
 
-## Controllers
-
-http://symfony.com/doc/current/cookbook/controller/service.html
 

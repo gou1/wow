@@ -1,3 +1,19 @@
+api_doges:
+    path: /api.{_format}
+    defaults: 
+        _controller: ManiadogeBundle:Api:getDoges
+        _format: html
+    requirements:
+        _format: xml|json|html|yml
+        
+api_doge:
+    path: /api/{id}.{_format}
+    defaults: 
+        _controller: ManiadogeBundle:Api:getDoge
+        _format: html
+    requirements:
+        _format: xml|json|html|yml
+
 maniadoge_index:
     path:     /
     defaults: { _controller: ManiadogeBundle:Doge:index }

@@ -71,7 +71,7 @@ CXmlDocument XML_TextToXMLDocument(Text _XmlText) {
 Text GetTheDoges () {
 
     declare Text[Text][] _Data;
-    declare _Url = "http://127.0.0.1/maniadoge/web/app_dev.php/api.xml";
+    declare _Url = "http://127.0.0.1/maniadoge/web/app_dev.php/api/doges.xml";
     declare Request <=> Http.CreateGet(_Url, False);
     wait(Request.IsCompleted);
     if (Request.StatusCode == 200) {    

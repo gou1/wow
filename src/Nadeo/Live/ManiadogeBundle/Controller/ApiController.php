@@ -2,37 +2,34 @@
 
 namespace Nadeo\Live\ManiadogeBundle\Controller;
 
+use FOS\RestBundle\Controller\Annotations\Get;
+use FOS\RestBundle\Controller\Annotations\View;
+use FOS\RestBundle\Controller\FOSRestController;
 use Nadeo\Live\ManiadogeBundle\Entity\Doge;
+use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Response;
 
-class ApiController extends Controller
+class ApiController extends FOSRestController
 {
 
     /**
-     * @return Response
+     * @ApiDoc(resource=true, description="Wow such api")
+     * @Get("/doges")
+     * @View(template="ManiadogeBundle:Api:data.html.twig", templateVar="data")
      */
-    protected function restResponse($data, $_format)
+    public function getDogesAction()
     {
-        $serializerFormat = $_format == 'html' ? 'yml' : $_format;
-        $templateFormat   = $_format == 'html' ? 'html' : 'mixed';
-        $serializedData   = $this->get('jms_serializer')->serialize($data, $serializerFormat);
-
-        return $this->render('ManiadogeBundle:Api:response.'.$templateFormat.'.php', ['data' => $serializedData]);
-    }
-
-    public function getDogesAction($_format)
-    {
-        $doges = $this->getDoctrine()->getManager()->getRepository(Doge::class)->findAll();
-        return $this->restResponse($doges, $_format);
+        return $this->getDoctrine()->getManager()->getRepository(Doge::class)->findAll();
     }
 
     /**
+     * @ApiDoc(description="very wow")
+     * @Get("/doges/{name}")
+     * @View(template="ManiadogeBundle:Api:data.html.twig", templateVar="data")
      * @ParamConverter("doge", class="ManiadogeBundle:Doge")
      */
-    public function getDogeAction(Doge $doge, $_format)
+    public function getDogeAction(Doge $doge)
     {
-        return $this->restResponse($doge, $_format);
+        return $doge;
     }
 }

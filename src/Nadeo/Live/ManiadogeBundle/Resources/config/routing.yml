@@ -1,29 +1,5 @@
-api_doges:
-    path: /api.{_format}
-    defaults: 
-        _controller: ManiadogeBundle:Api:getDoges
-        _format: html
-    requirements:
-        _format: xml|json|html|yml
-        
-api_doge:
-    path: /api/{id}.{_format}
-    defaults: 
-        _controller: ManiadogeBundle:Api:getDoge
-        _format: html
-    requirements:
-        _format: xml|json|html|yml
-
-maniadoge_index:
-    path:     /
-    defaults: { _controller: ManiadogeBundle:Doge:index }
-
-maniadoge_create:
-    path:     /create
-    defaults: { _controller: ManiadogeBundle:Doge:create }    
-
-maniadoge_doge:
-    path:     /{id}
-    defaults: { _controller: ManiadogeBundle:Doge:doge }
-    
-
+maniadoge_api:
+    type: rest
+    prefix: /api
+    resource: Nadeo\Live\ManiadogeBundle\Controller\ApiController
+    name_prefix:  v1_api_

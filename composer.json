@@ -21,9 +21,12 @@
         "sensio/distribution-bundle": "~3.0",
         "sensio/framework-extra-bundle": "~3.0",
         "incenteev/composer-parameter-handler": "~2.0",
-        "manialib/manialib-bundle": "~4.0",
+        "doctrine/doctrine-fixtures-bundle": "~2.2",
+        "friendsofsymfony/rest-bundle": "~1.4",
+        "nelmio/api-doc-bundle": "~2.7",
+        "fzaninotto/faker": "~1.4",
         "jms/serializer-bundle": "0.13.0",
-        "doctrine/doctrine-fixtures-bundle": "2.2.*"
+        "manialib/manialib-bundle": "~4.0"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"

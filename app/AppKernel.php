@@ -17,9 +17,11 @@ class AppKernel extends Kernel
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
-            // Added bundles compared to Symfony Standard Edition
+           // Added bundles
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
+            new FOS\RestBundle\FOSRestBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle(),
+            new Nelmio\ApiDocBundle\NelmioApiDocBundle(),
             new Manialib\ManialibBundle\ManialibBundle(),
             // App bundle
             new Nadeo\Live\ManiadogeBundle\ManiadogeBundle(),

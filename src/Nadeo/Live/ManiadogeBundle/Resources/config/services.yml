@@ -1,6 +1,0 @@
-services:
-    maniadoge.controllers.doge:
-        class: Nadeo\Live\ManiadogeBundle\Controllers\DogeController
-        arguments:
-            - @doctrine.orm.entity_manager
-            - @manialib.xml.renderer

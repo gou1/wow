@@ -28,7 +28,6 @@ class ApiController extends FOSRestController
      * @ApiDoc(description="very wow")
      * @Get("/doges/{id}")
      * @View(template="ManiadogeBundle:Api:data.html.twig", templateVar="data")
-     * @ParamConverter("doge", class="ManiadogeBundle:Doge")
      */
     public function getDogeAction(Doge $doge)
     {
@@ -62,4 +61,5 @@ class ApiController extends FOSRestController
         }
         throw new \InvalidArgumentException($form->getErrors());
     }
+
 }

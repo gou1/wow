@@ -1,5 +1,0 @@
-maniadoge_api:
-    type: rest
-    prefix: /api
-    resource: Nadeo\Live\ManiadogeBundle\Controller\ApiController
-    name_prefix:  v1_api_

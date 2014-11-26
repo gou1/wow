@@ -1,6 +1,6 @@
 # Resting with my doges
 
-!(http://upload.wikimedia.org/wikipedia/en/5/5f/Original_Doge_meme.jpg)
+![Doge](http://upload.wikimedia.org/wikipedia/en/5/5f/Original_Doge_meme.jpg)
 
 This is a sandbox to create an online service to manage Doge's in Maniaplanet.
 

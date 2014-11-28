@@ -13,6 +13,10 @@ class Compiler
     protected $compilerFilters   = [];
     protected $compiledLibraries = [];
     protected $includedLibraries = [];
+    protected $ignoredLibraries = [
+        "TextLib",
+        "MathLib",
+    ];
 
     protected function addHeaderFilter($library, $maniascript)
     {
@@ -26,6 +30,10 @@ class Compiler
         foreach ($matches as $match) {
             // Include once inline
             $includedLibrary = $match[1];
+            if(in_array($includedLibrary, $this->ignoredLibraries))
+            {
+                continue;
+            }
             if(!in_array($includedLibrary, $this->includedLibraries)) {
                 $includedManiascript = $this->compile($includedLibrary);
                 $this->includedLibraries[] = $includedLibrary;

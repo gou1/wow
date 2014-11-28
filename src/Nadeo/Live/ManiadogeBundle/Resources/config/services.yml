@@ -1,0 +1,6 @@
+services:
+    manialib.maniascript.autoloader:
+        class: Manialib\Maniascript\Autoloader
+        arguments:
+            - []
+            - @logger

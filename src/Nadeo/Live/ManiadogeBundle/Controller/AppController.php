@@ -3,23 +3,28 @@
 namespace Nadeo\Live\ManiadogeBundle\Controller;
 
 use FOS\RestBundle\Controller\Annotations\Get;
-use FOS\RestBundle\Controller\Annotations\Post;
-use FOS\RestBundle\Controller\Annotations\View;
 use FOS\RestBundle\Controller\FOSRestController;
-use Nadeo\Live\ManiadogeBundle\Entity\Doge;
-use Nadeo\Live\ManiadogeBundle\Form\DogeType;
-use Nelmio\ApiDocBundle\Annotation\ApiDoc;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use Manialib\Maniascript\Autoloader;
+use Manialib\Maniascript\Compiler;
+use Symfony\Component\HttpFoundation\Request;
 
 class AppController extends FOSRestController
 {
 
     /**
      * @Get("/manialink");
-     * @View(template="ManiadogeBundle:App:manialink.xml.php", templateVar="data")
      */
-    public function getManialinkAction($_format)
+    public function getManialinkAction(Request $request)
     {
-        return 'yo';
+        $autoloader  = $this->get('manialib.maniascript.autoloader');
+        $autoloader->addIncludePath(__DIR__.'/../Resources/maniascript');
+        $compiler    = new Compiler($autoloader);
+        $maniascript = $compiler->compile('Doge/Application.Script.txt');
+
+        return $this->handleView(
+                $this->view($maniascript, 200)
+                    ->setTemplate("ManiadogeBundle:App:manialink.".($request->query->all() ? 'html' : 'xml').".php")
+                    ->setTemplateVar('maniascript')
+        );
     }
 }

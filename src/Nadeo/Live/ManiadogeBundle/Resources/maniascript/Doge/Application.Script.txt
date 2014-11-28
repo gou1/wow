@@ -1,0 +1,8 @@
+#RequireContext CMlApp
+
+#Include "Manialib/Logger.Script.txt" as Logger
+
+main() {
+    Logger::Debug("test");
+    while(True) { yield; }
+}

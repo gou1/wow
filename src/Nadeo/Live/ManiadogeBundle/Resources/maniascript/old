@@ -1,4 +1,7 @@
 #RequireContext CMlApp
+
+#Include "http://127.0.0.1/maniadoge/web/LibDebug.Script.txtm" as Debug
+
 #Include "TextLib" as TL
 #Include "MathLib" as ML
 

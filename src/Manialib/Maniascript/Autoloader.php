@@ -4,14 +4,11 @@ namespace Manialib\Maniascript;
 
 class Autoloader
 {
+    use \Psr\Log\LoggerAwareTrait;
+    
     const NAMESPACE_INCLUDE_SEPARATOR = '/';
     const NAMESPACE_SCRIPT_SEPARATOR  = '_';
 
-    /**
-     *
-     * @var \Psr\Log\LoggerInterface
-     */
-    protected $logger;
     protected $includePaths                    = array();
     protected $autoloadedLibrariesFilenames    = array();
     protected $autoloadedLibrariesManiascripts = array();
@@ -24,10 +21,11 @@ class Autoloader
             foreach ($this->includePaths as $includePath) {
                 if (file_exists($includePath.DIRECTORY_SEPARATOR.$filename)) {
                     $this->autoloadedLibrariesFilenames[$library] = $includePath.DIRECTORY_SEPARATOR.$filename;
+                    return $this->autoloadedLibrariesFilenames[$library];
                 }
             }
         }
-        return $this->autoloadedLibrariesFilenames[$library];
+        return false;
     }
 
     protected function getManiascript($library)
@@ -44,11 +42,10 @@ class Autoloader
         return $this->autoloadedLibrariesManiascripts[$library];
     }
 
-    function __construct(array $includePaths = array(), \Psr\Log\LoggerInterface $logger = null)
+    function __construct(array $includePaths = array())
     {
         $this->includePaths    = $includePaths;
         $this->includePaths[] = __DIR__.'/Resources/maniascript';
-        $this->logger = $logger ?: new \Psr\Log\NullLogger();
     }
 
     function addIncludePath($path)

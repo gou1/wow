@@ -4,37 +4,46 @@ namespace Manialib\Maniascript;
 
 class Compiler
 {
+    use \Psr\Log\LoggerAwareTrait;
+
     /**
      * @var Autoloader
      */
     protected $autoloader;
-    protected $compilerFilters   = array();
-    protected $compiledLibraries = array();
+    protected $compilerFilters   = [];
+    protected $compiledLibraries = [];
+    protected $includedLibraries = [];
 
     protected function addHeaderFilter($library, $maniascript)
     {
-        return "\n//Autoloaded: $library\n\n$maniascript\n";
+        return "//Autoloaded: $library\n\n$maniascript\n";
     }
 
     protected function virtualIncludeFilter($library, $maniascript)
     {
-        $def = '#Include "Manialib/Logger.Script.txt" as Logger';
-        $lib = 'Manialib/Logger.Script.txt';
-        $pre = 'Logger::';
-        $rep = 'Manialib_Logger_';
+        $includeRegexp = '%#Include +"([A-Za-z0-9_/\.-]+)" +as +([A-Za-z0-9_]+)%m';
+        preg_match_all($includeRegexp, $maniascript, $matches, PREG_SET_ORDER);
+        foreach ($matches as $match) {
+            // Include once inline
+            $includedLibrary = $match[1];
+            if(!in_array($includedLibrary, $this->includedLibraries)) {
+                $includedManiascript = $this->compile($includedLibrary);
+                $this->includedLibraries[] = $includedLibrary;
+            } else {
+                $includedManiascript = '//Not autoloaded: already included';
+            }
+            $maniascript = preg_replace('%'.$match[0].'%', '//'.$match[0]."\n".$includedManiascript, $maniascript);
 
-        if($lib != $library)
-        {
+            // Understand Maniascript namespace
+            $namespace = str_replace(["/", ".Script.txt"], ["_", "_"], $match[1]);
+
+            // Replace Alias with namespace
+            $maniascript = preg_replace('%([^A-Za-z0-9_]*)('.$match[2].'::)%', '$1'.$namespace, $maniascript);
         }
-        if($lib != $library)
-        {
-            $maniascript = str_replace($def, $this->compile($lib), $maniascript);
-        }
-        $maniascript = str_replace($pre, $rep, $maniascript);
         return $maniascript;
     }
 
-    function __construct(Autoloader $autloader, array $compilerFilters = array())
+    function __construct(Autoloader $autloader)
     {
         $this->autoloader      = $autloader;
         $this->compilerFilters = [

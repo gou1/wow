@@ -1,8 +1,17 @@
 #RequireContext CMlApp
 
 #Include "Manialib/Logger.Script.txt" as Logger
+#Include "Manialib/Event.Script.txt" as Event
 
 main() {
-    Logger::Debug("test");
-    while(True) { yield; }
+    Event::DispatchCustomEvent("Foobar", ["a"]);
+    while(True) { 
+        
+        foreach(Event in Event::PendingEvents())
+        {
+            Logger::Debug(Event[0][0]);
+        }
+        Event::Yield();
+        yield; 
+    }
 }

@@ -16,10 +16,8 @@ class AppController extends FOSRestController
      */
     public function getManialinkAction(Request $request)
     {
-        $autoloader  = $this->get('manialib.maniascript.autoloader');
-        $autoloader->addIncludePath(__DIR__.'/../Resources/maniascript');
-        $compiler    = new Compiler($autoloader);
-        $maniascript = $compiler->compile('Doge/Application.Script.txt');
+        $autoloader  = $this->get('manialib.maniascript.autoloader')->addIncludePath(__DIR__.'/../Resources/maniascript');
+        $maniascript = $this->get('manialib.maniascript.compiler')->compile('Doge/Application.Script.txt');
 
         return $this->handleView(
                 $this->view($maniascript, 200)

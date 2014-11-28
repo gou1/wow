@@ -1,16 +1,31 @@
 #RequireContext CMlApp
 
+#Include "TextLib" as TL
+#Include "MathLib" as ML
+
 #Include "Manialib/Logger.Script.txt" as Logger
 #Include "Manialib/Event.Script.txt" as Event
+#Include "Manialib/Http.Script.txt" as Http
+#Include "Manialib/Xml.Script.txt" as Xml
+#Include "Doge/Library.Script.txt" as Doge
 
 main() {
-    Event::DispatchCustomEvent("Foobar", ["a"]);
+    
+    declare Layer = UILayerCreate();
+    declare RequestId = Http::GetAsync("http://127.0.0.1/maniadoge/web/app_dev.php/doges.xml");
+
     while(True) { 
-        
-        foreach(Event in Event::PendingEvents())
+        foreach(Id => Response in Http::PendingResponses())
         {
-            Logger::Debug(Event[0][0]);
+            if(Id == RequestId)
+            {
+                declare _Doc = Xml::TextToXmlDocument(Response);
+                declare _Data = Xml::NodeToArray2(_Doc.GetFirstChild("result"));
+                Layer.ManialinkPage = Doge::Doges(_Data);
+            }
         }
+
+        Http::Loop();
         Event::Yield();
         yield; 
     }

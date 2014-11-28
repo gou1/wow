@@ -2,8 +2,12 @@
 
 namespace Nadeo\Live\ManiadogeBundle\Entity;
 
+use JMS\Serializer\Annotation\XmlRoot;
+use JMS\Serializer\Annotation\XmlList;
+
 /**
  * Doge
+ * @XMLRoot("doge");
  */
 class Doge
 {

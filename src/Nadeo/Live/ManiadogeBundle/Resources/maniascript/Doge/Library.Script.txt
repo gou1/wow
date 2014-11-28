@@ -1,0 +1,26 @@
+Text Doge_Library_Doge(Text Name, Text ImageUrl, Vec3 Position)
+{
+    return """
+    <frame posn="{{{Position.X}}} {{{Position.Y}}}">
+        <quad posn="0 0 0" sizen="50 50" image="{{{ImageUrl}}}"/>
+        <label posn="25 -45.5 1" sizen="50 10" text="{{{Name}}}" style="TextTitle2Blink" halign="center" valign="center2"/>
+    </frame>
+    """;
+}
+
+Text Doge_Library_Doges(Text[Text][] Data) {
+    declare Text Output;
+    declare Vec3 Position = <-150., 80., 0.>;
+    
+    foreach(DogeItem in Data) {
+        Output ^= Doge_Library_Doge(DogeItem["name"], DogeItem["image_url"], Position);
+        Position.X += 55;
+        if(Position.X > 100.)
+        {
+            Position.X = -150.;
+            Position.Y += -55.;
+        }
+    }
+
+    return Output;
+}

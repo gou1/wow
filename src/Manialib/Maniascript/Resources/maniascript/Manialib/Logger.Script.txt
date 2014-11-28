@@ -29,3 +29,9 @@ Void Manialib_Logger_Log(Integer Level, Text Message) {
 Void Manialib_Logger_Debug(Text Message) {
     Manialib_Logger_Log(C_Manialib_Logger_Level_Debug, Message);
 }
+
+Void Manialib_Logger_Info(Text Message) {
+    Manialib_Logger_Log(C_Manialib_Logger_Level_Info, Message);
+}
+
+// todo: implement other levels...

@@ -14,6 +14,7 @@ main() {
     declare Ident DogesRequestId;
     declare Ident DogeRequestId;
 
+    Logger::SetLevelConfig(100, False);
     Logger::Info("WOW SUCH DOGE ----------------------------------------");
 
     Event::DispatchCustomEvent("Doge.Section.Home");

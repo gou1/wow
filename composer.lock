@@ -1677,12 +1677,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/manialib/maniascript.git",
-                "reference": "34de0ac372534b61752699701122b86f4a4e97bc"
+                "reference": "2fe9bd89317f902f43500fdcf36d81e6c07b3200"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/manialib/maniascript/zipball/34de0ac372534b61752699701122b86f4a4e97bc",
-                "reference": "34de0ac372534b61752699701122b86f4a4e97bc",
+                "url": "https://api.github.com/repos/manialib/maniascript/zipball/2fe9bd89317f902f43500fdcf36d81e6c07b3200",
+                "reference": "2fe9bd89317f902f43500fdcf36d81e6c07b3200",
                 "shasum": ""
             },
             "require": {
@@ -1722,7 +1722,7 @@
                 "TrackMania",
                 "Ubisoft"
             ],
-            "time": "2014-12-01 11:30:33"
+            "time": "2014-12-01 17:08:20"
         },
         {
             "name": "manialib/xml",

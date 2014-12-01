@@ -1,11 +1,11 @@
 maniadoge_api:
     type: rest
-    prefix: /
+    prefix: /api
     resource: Nadeo\Live\ManiadogeBundle\Controller\ApiController
     name_prefix:  v1_api_
     
 maniadoge_app:
     type: rest
-    prefix: /
-    resource: Nadeo\Live\ManiadogeBundle\Controller\AppController
+    prefix: /manialink
+    resource: Nadeo\Live\ManiadogeBundle\Controller\ManialinkController
     name_prefix:  v1_app_

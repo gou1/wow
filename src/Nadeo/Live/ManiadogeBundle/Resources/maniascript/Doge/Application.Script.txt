@@ -8,7 +8,7 @@
 
 main() {
 
-    declare ApiUrl = "http://127.0.0.1/maniadoge/web/app_dev.php";
+    declare ApiUrl = "http://127.0.0.1/maniadoge/web/app_dev.php/api";
     
     declare Layer = UILayerCreate();
     declare Ident DogesRequestId;

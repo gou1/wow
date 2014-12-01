@@ -10,8 +10,8 @@ A Maniascript application provides a frontend to that API for the Maniaplanet cl
 
 # wow wat u have here
 
-Suppose you have your project root accessible via /maniadoge on your local web server.
+Suppose you have your app endpoint is accessible via http://127.0.0.1/maniadoge/web/app_dev.php
 
-- API Doc: http://127.0.0.1/maniadoge/web/app_dev.php/api
-- Maniascript application: http://127.0.0.1/maniadoge/web/app_dev.php/manialink
-- Same with debug toolbar, Chrome Logger and XML formatting, to work in your Web browser: http://127.0.0.1/maniadoge/web/app_dev.php/manialink?igshgdifgdfn (that should be doable without having to specify a dummy query string).
+- `/api` API documentation
+- `/manialink` Maniascript application to display in the Manialink browser
+- `/manialink?some_dummy_query` (temporary) Same, but with formatting and Chrome PHP logging

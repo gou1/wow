@@ -1,12 +1,1 @@
-services:
-    manialib.maniascript.autoloader:
-        class: Manialib\Maniascript\Autoloader
-        calls:
-            - ['setLogger', [@logger]]
-            
-    manialib.maniascript.compiler:
-        class: Manialib\Maniascript\Compiler
-        arguments:
-            - @manialib.maniascript.autoloader
-        calls:
-            - ['setLogger', [@logger]]
+#services:

@@ -1,10 +1,32 @@
-Text Doge_Library_Doge(Text Name, Text ImageUrl, Vec3 Position)
+Text Private_Doge_Library_DogeItem(Text Id, Text Name, Text ImageUrl, Vec3 Position, Vec2 Size)
 {
     return """
     <frame posn="{{{Position.X}}} {{{Position.Y}}}">
-        <quad posn="0 0 0" sizen="50 50" image="{{{ImageUrl}}}"/>
-        <label posn="25 -45.5 1" sizen="50 10" text="{{{Name}}}" style="TextTitle2Blink" halign="center" valign="center2"/>
+        <quad id="doge-details" data-id="{{{Id}}}" scriptevents="1" posn="0 0 0" sizen="{{{Size.X}}} {{{Size.Y}}}" image="{{{ImageUrl}}}"/>
+        <label posn="{{{Size.X/2.}}} {{{-Size.Y+5}}} 1" sizen="50 10" text="{{{Name}}}" style="TextTitle2Blink" halign="center" valign="center2"/>
     </frame>
+    """;
+}
+
+Text Doge_Library_Doge(Text Id, Text Name, Text ImageUrl, Vec3 Position)
+{
+    return Private_Doge_Library_DogeItem(Id, Name, ImageUrl, Position, <150., 150.>)^"""
+    <script>    
+    main()
+    {
+        while(True)
+        {
+            foreach(Event in PendingEvents)
+            {
+                if (Event.Type == CMlEvent::Type::MouseClick)
+                {
+                    SendCustomEvent("Doge.Section.Home", Text[]);
+                }
+            }
+            yield;
+        }
+    }
+    </script>
     """;
 }
 
@@ -13,7 +35,7 @@ Text Doge_Library_Doges(Text[Text][] Data) {
     declare Vec3 Position = <-150., 80., 0.>;
     
     foreach(DogeItem in Data) {
-        Output ^= Doge_Library_Doge(DogeItem["name"], DogeItem["image_url"], Position);
+        Output ^= Private_Doge_Library_DogeItem(DogeItem["id"], DogeItem["name"], DogeItem["image_url"], Position, <50., 50.>);
         Position.X += 55;
         if(Position.X > 100.)
         {
@@ -21,6 +43,25 @@ Text Doge_Library_Doges(Text[Text][] Data) {
             Position.Y += -55.;
         }
     }
+
+    Output ^= """
+    <script>
+     main()
+    {
+        while(True)
+        {
+            foreach(Event in PendingEvents)
+            {
+                if (Event.Type == CMlEvent::Type::MouseClick)
+                {
+                    SendCustomEvent("Click", [Event.ControlId, Event.Control.DataAttributeGet("id")]);
+                }
+            }
+            yield;
+        }
+    }
+    </script>
+    """;
 
     return Output;
 }

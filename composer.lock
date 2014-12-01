@@ -810,12 +810,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/doctrine2.git",
-                "reference": "c2ad33870746b4ae5fb11b4a67329c485e3f970c"
+                "reference": "30bf192cf4a7e0289ab113f44e80b16e6e02e456"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/c2ad33870746b4ae5fb11b4a67329c485e3f970c",
-                "reference": "c2ad33870746b4ae5fb11b4a67329c485e3f970c",
+                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/30bf192cf4a7e0289ab113f44e80b16e6e02e456",
+                "reference": "30bf192cf4a7e0289ab113f44e80b16e6e02e456",
                 "shasum": ""
             },
             "require": {
@@ -877,7 +877,7 @@
                 "database",
                 "orm"
             ],
-            "time": "2014-11-28 11:23:23"
+            "time": "2014-12-01 15:52:56"
         },
         {
             "name": "friendsofsymfony/rest-bundle",

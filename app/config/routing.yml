@@ -1,8 +1,0 @@
-api:
-    resource: "@ManiadogeBundle/Resources/config/routing_rest.yml"
-    type: rest
-    
-NelmioApiDocBundle:
-    resource: "@NelmioApiDocBundle/Resources/config/routing.yml"
-    prefix:   /api
-    

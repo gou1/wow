@@ -3,12 +3,14 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation\XmlRoot;
 
 /**
  * Doge
  *
  * @ORM\Table()
  * @ORM\Entity
+ * @XmlRoot("doge")
  */
 class Doge
 {

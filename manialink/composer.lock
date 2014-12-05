@@ -1,0 +1,281 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "a5cdf405507d73d853c78cde12cf52f1",
+    "packages": [
+        {
+            "name": "manialib/manialink",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/manialib/manialink.git",
+                "reference": "f667de076552e1985f6b3dac053c8ba9e59a4ec9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/manialib/manialink/zipball/f667de076552e1985f6b3dac053c8ba9e59a4ec9",
+                "reference": "f667de076552e1985f6b3dac053c8ba9e59a4ec9",
+                "shasum": ""
+            },
+            "require": {
+                "manialib/xml": "~4.0"
+            },
+            "require-dev": {
+                "symfony/console": "~2.4",
+                "symfony/finder": "~2.3",
+                "symfony/stopwatch": "~2.4"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Manialib\\": "src/Manialib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nadeo",
+                    "email": "contact@nadeo.com",
+                    "homepage": "http://www.nadeo.com/"
+                }
+            ],
+            "description": "Fluent object interface for writing Manialink",
+            "homepage": "https://github.com/manialib",
+            "keywords": [
+                "ManiaLib",
+                "ManiaPlanet",
+                "Nadeo",
+                "ShootMania",
+                "TrackMania",
+                "Ubisoft"
+            ],
+            "time": "2014-11-13 20:30:18"
+        },
+        {
+            "name": "manialib/maniascript",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/manialib/maniascript.git",
+                "reference": "390037ba749247ddf0f8b520866980466cfcb804"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/manialib/maniascript/zipball/390037ba749247ddf0f8b520866980466cfcb804",
+                "reference": "390037ba749247ddf0f8b520866980466cfcb804",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5",
+                "psr/log": "~1.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Manialib\\": "src/Manialib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nadeo",
+                    "email": "contact@nadeo.com",
+                    "homepage": "http://www.nadeo.com/"
+                }
+            ],
+            "description": "Autoloader, Compiler and a few Maniascript libraries to ease the developement of Maniascript applications.",
+            "homepage": "https://github.com/manialib",
+            "keywords": [
+                "ManiaLib",
+                "ManiaPlanet",
+                "ManiaScript",
+                "Nadeo",
+                "ShootMania",
+                "TrackMania",
+                "Ubisoft"
+            ],
+            "time": "2014-12-02 11:20:53"
+        },
+        {
+            "name": "manialib/xml",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/manialib/xml.git",
+                "reference": "7d413eea8a7f1f483c661c0f838d79e6bccc2148"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/manialib/xml/zipball/7d413eea8a7f1f483c661c0f838d79e6bccc2148",
+                "reference": "7d413eea8a7f1f483c661c0f838d79e6bccc2148",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5",
+                "symfony/event-dispatcher": "~2.4"
+            },
+            "require-dev": {
+                "symfony/finder": "2.3.*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Manialib\\": "src/Manialib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nadeo",
+                    "email": "contact@nadeo.com",
+                    "homepage": "http://www.nadeo.com/"
+                }
+            ],
+            "description": "Fluent object interface for writing XML.",
+            "homepage": "https://github.com/manialib",
+            "keywords": [
+                "ManiaLib",
+                "ManiaPlanet",
+                "Nadeo",
+                "ShootMania",
+                "TrackMania",
+                "Ubisoft"
+            ],
+            "time": "2014-11-17 10:27:42"
+        },
+        {
+            "name": "psr/log",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/log.git",
+                "reference": "fe0936ee26643249e916849d48e3a51d5f5e278b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/log/zipball/fe0936ee26643249e916849d48e3a51d5f5e278b",
+                "reference": "fe0936ee26643249e916849d48e3a51d5f5e278b",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Psr\\Log\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "http://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interface for logging libraries",
+            "keywords": [
+                "log",
+                "psr",
+                "psr-3"
+            ],
+            "time": "2012-12-21 11:40:51"
+        },
+        {
+            "name": "symfony/event-dispatcher",
+            "version": "v2.6.1",
+            "target-dir": "Symfony/Component/EventDispatcher",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/EventDispatcher.git",
+                "reference": "720fe9bca893df7ad1b4546649473b5afddf0216"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/EventDispatcher/zipball/720fe9bca893df7ad1b4546649473b5afddf0216",
+                "reference": "720fe9bca893df7ad1b4546649473b5afddf0216",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "psr/log": "~1.0",
+                "symfony/config": "~2.0",
+                "symfony/dependency-injection": "~2.6",
+                "symfony/expression-language": "~2.6",
+                "symfony/stopwatch": "~2.2"
+            },
+            "suggest": {
+                "symfony/dependency-injection": "",
+                "symfony/http-kernel": ""
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.6-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\EventDispatcher\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                },
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "Symfony EventDispatcher Component",
+            "homepage": "http://symfony.com",
+            "time": "2014-12-02 20:19:20"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "manialib/xml": 20,
+        "manialib/manialink": 20,
+        "manialib/maniascript": 20
+    },
+    "prefer-stable": false,
+    "platform": [],
+    "platform-dev": []
+}

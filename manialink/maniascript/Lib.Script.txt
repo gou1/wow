@@ -1,0 +1,67 @@
+Text Private_Lib_DogeItem(Text Id, Text Name, Text ImageUrl, Vec3 Position, Vec2 Size)
+{
+    return """
+    <frame posn="{{{Position.X}}} {{{Position.Y}}}">
+        <quad id="doge-details" data-id="{{{Id}}}" scriptevents="1" posn="0 0 0" sizen="{{{Size.X}}} {{{Size.Y}}}" image="{{{ImageUrl}}}"/>
+        <label posn="{{{Size.X/2.}}} {{{-Size.Y+5}}} 1" sizen="50 10" text="{{{Name}}}" style="TextTitle2Blink" halign="center" valign="center2"/>
+    </frame>
+    """;
+}
+
+Text Lib_Doge(Text Id, Text Name, Text ImageUrl, Vec3 Position)
+{
+    return Private_Lib_DogeItem(Id, Name, ImageUrl, Position, <150., 150.>)^"""
+    <script>
+    main()
+    {
+        while(True)
+        {
+            foreach(Event in PendingEvents)
+            {
+                if (Event.Type == CMlEvent::Type::MouseClick)
+                {
+                    SendCustomEvent("Doge.Section.Home", Text[]);
+                }
+            }
+            yield;
+        }
+    }
+    </script>
+    """;
+}
+
+Text Lib_Doges(Text[Text][] Data) {
+    declare Text Output;
+    declare Vec3 Position = <-150., 80., 0.>;
+
+    foreach(DogeItem in Data) {
+        Output ^= Private_Lib_DogeItem(DogeItem["id"], DogeItem["name"], DogeItem["image_url"], Position, <50., 50.>);
+        Position.X += 55;
+        if(Position.X > 100.)
+        {
+            Position.X = -150.;
+            Position.Y += -55.;
+        }
+    }
+
+    Output ^= """
+    <script>
+     main()
+    {
+        while(True)
+        {
+            foreach(Event in PendingEvents)
+            {
+                if (Event.Type == CMlEvent::Type::MouseClick)
+                {
+                    SendCustomEvent("Click", [Event.ControlId, Event.Control.DataAttributeGet("id")]);
+                }
+            }
+            yield;
+        }
+    }
+    </script>
+    """;
+
+    return Output;
+}

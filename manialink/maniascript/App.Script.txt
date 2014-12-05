@@ -1,0 +1,70 @@
+#RequireContext CMlApp
+
+#Include "Manialib/Logger.Script.txt" as Logger
+#Include "Manialib/Event.Script.txt" as Event
+#Include "Manialib/Http.Script.txt" as Http
+#Include "Manialib/Xml.Script.txt" as Xml
+#Include "Lib.Script.txt" as Doge
+
+main() {
+
+    declare ApiUrl = "http://127.0.0.1/wow/api/web/app_dev.php";
+
+    declare Layer = UILayerCreate();
+    declare Ident DogesRequestId;
+    declare Ident DogeRequestId;
+
+    //Logger::SetLevelConfig(100, False);
+    Logger::Info("WOW SUCH DOGE ----------------------------------------");
+
+    Event::DispatchCustomEvent("Doge.Section.Home");
+
+    while(True) {
+
+        foreach(Event in PendingEvents) {
+			switch(Event.Type) {
+				case CManiaplanetPluginEvent::EType::LayerCustomEvent: {
+					switch(Event.CustomEventType) {
+						case "Click": {
+							switch(Event.CustomEventData[0]) {
+								case "doge-details": {
+                                    DogeRequestId = Http::GetAsync(ApiUrl^"/doges/"^Event.CustomEventData[1]^".xml");
+								}
+							}
+						}
+                        case "Doge.Section.Home": {
+                            Event::DispatchCustomEvent("Doge.Section.Home");
+                        }
+					}
+				}
+			}
+		}
+
+        foreach(Event in Event::PendingEvents())
+        {
+            switch(Event[0][0]) {
+                case "Doge.Section.Home": {
+                    DogesRequestId = Http::GetAsync(ApiUrl^"/doges.xml");
+                }
+                case "Manialib.Http.Success": {
+                    switch(Event[1][0]) {
+                        case DogesRequestId^"": {
+                            declare _Doc = Xml::TextToXmlDocument(Event[1][1]);
+                            declare _Data = Xml::NodeToArray2(_Doc.GetFirstChild("result"));
+                            Layer.ManialinkPage = Doge::Doges(_Data);
+                        }
+                        case DogeRequestId^"": {
+                            declare _Doc = Xml::TextToXmlDocument(Event[1][1]);
+                            declare _Data = Xml::NodeToArray(_Doc.GetFirstChild("doge"));
+                            Layer.ManialinkPage = Doge::Doge(_Data["id"], _Data["name"], _Data["image_url"], <-75., 75., 0.>);
+                        }
+                    }
+                }
+            }
+        }
+
+        Http::Loop();
+        Event::Yield();
+        yield;
+    }
+}

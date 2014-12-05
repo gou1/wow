@@ -1,0 +1,4 @@
+default:
+    resource: AppBundle\Controller\DefaultController
+    type: rest
+    name_prefix: api_default_

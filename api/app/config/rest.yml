@@ -1,14 +1,18 @@
 fos_rest:
-    param_fetcher_listener: false
-    body_listener: false
+    param_fetcher_listener: true
+    body_listener:
+        decoders:
+            jsonbin: fos_rest.decoder.json
     format_listener:
         rules:
             # ConvertToHtmlResponse should be smarter...
-            - { path: ^/doges/new, priorities: [ json, xml, html ], fallback_format: json, prefer_extension: true }
-            - { path: ^/, priorities: [ json, xml ], fallback_format: json, prefer_extension: true }
+            - { path: ^/doges/new, priorities: [ json, xml, html, jsonbin ], fallback_format: json, prefer_extension: true }
+            - { path: ^/, priorities: [ json, xml, jsonbin ], fallback_format: json, prefer_extension: true }
 
     view:
         view_response_listener: force
+        mime_types:
+            jsonbin: ['application/binary']
         templating_formats:
             html: true
 

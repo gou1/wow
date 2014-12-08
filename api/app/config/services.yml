@@ -4,7 +4,24 @@ parameters:
 #    parameter_name: value
 
 services:
+
     app.listener.convert_to_html_response:
         class: AppBundle\EventListener\ConvertToHtmlResponse
         tags:
         - { name: kernel.event_listener, event: kernel.response }
+
+    #app.handler.abstract:
+    #    class: AppBundle\Handler\AbstractHandler
+    #    arguments:
+    #    - AppBundle\Entity\Item
+    #    - AppBundle\Form\ItemType
+    #    - @doctrine.orm.entity_manager
+    #    - @form.factory
+
+    app.handler.doge:
+        class: AppBundle\Handler\DogeHandler
+        arguments:
+        - AppBundle\Entity\Doge
+        - AppBundle\Form\DogeType
+        - @doctrine.orm.entity_manager
+        - @form.factory

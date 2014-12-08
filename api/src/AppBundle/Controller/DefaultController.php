@@ -12,7 +12,6 @@ class DefaultController extends FOSRestController
     /**
      * @ApiDoc(resource=true, description="Foobar")
      * @Get("/foobar")
-     * @View()
      */
     public function getFoobarAction()
     {

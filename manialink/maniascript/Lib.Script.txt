@@ -1,4 +1,26 @@
-Text Private_Lib_DogeItem(Text Id, Text Name, Text ImageUrl, Vec3 Position, Vec2 Size)
+#Include "MathLib" as ML
+
+Text[Text] Lib_RandomDoge() {
+    declare TheDoges = [
+             ["name" => "original" , "image_url" => "http://upload.wikimedia.org/wikipedia/en/5/5f/Original_Doge_meme.jpg" ],
+             ["name" => "follow your dreams" , "image_url" => "http://www.fanaru.com/doge/image/18361-doge-follow-your-dreams.jpg" ],
+             ["name" => "twinkies" , "image_url" => "http://www.slate.com/content/dam/slate/blogs/lexicon_valley/2014/02/13/doge_why_we_can_t_agree_on_how_to_pronounce_the_internet_meme_featuring/doge_twinkie.jpg.CROP.promovar-mediumlarge.jpg" ],
+             ["name" => "simple" , "image_url" => "https://pbs.twimg.com/profile_images/378800000822867536/3f5a00acf72df93528b6bb7cd0a4fd0c.jpeg" ],
+             ["name" => "viper rt10" , "image_url" => "http://static.fjcdn.com/pictures/Doge+wow+skill+doge_65934b_4755010.jpg" ],
+             ["name" => "jus do it" , "image_url" => "http://2prowriting.files.wordpress.com/2013/12/doge-athlete.jpg" ],
+             ["name" => "indie" , "image_url" => "http://i0.kym-cdn.com/photos/images/facebook/000/581/723/a8b.jpg" ],
+             ["name" => "much much" , "image_url" => "http://lh6.ggpht.com/Q1u7RhClCDy9XLzipIQXPLgJz3FKAVa9oBGooxdtzSYadKhyyjkJEdQK_irBPsWQLFD2BNQbjluSolsotSf5PHA7gx0taEBdygs=s0?.jpg" ],
+             ["name" => "cookie" , "image_url" => "http://barkpost-assets.s3.amazonaws.com/wp-content/uploads/2013/11/cookiedoge.jpg" ],
+             ["name" => "putin" , "image_url" => "http://weknowmemes.com/wp-content/uploads/2013/11/doge-meme-26.jpg" ],
+             ["name" => "watch doges" , "image_url" => "http://th00.deviantart.net/fs70/PRE/i/2013/356/6/9/watch_doges_by_thalessousa-d6yx2yf.jpg" ],
+             ["name" => "call of doge" , "image_url" => "http://i.imgur.com/hH9b49C.png" ],
+             ["name" => "the walking doge" , "image_url" => "http://2prowriting.files.wordpress.com/2014/03/doge-walking.jpg"]
+    ];
+    return TheDoges[ML::Rand(0, TheDoges.count-1)];
+}
+
+
+Text Lib_DogeItem(Text Id, Text Name, Text ImageUrl, Vec3 Position, Vec2 Size)
 {
     return """
     <frame posn="{{{Position.X}}} {{{Position.Y}}}">
@@ -8,34 +30,16 @@ Text Private_Lib_DogeItem(Text Id, Text Name, Text ImageUrl, Vec3 Position, Vec2
     """;
 }
 
-Text Lib_Doge(Text Id, Text Name, Text ImageUrl, Vec3 Position)
-{
-    return Private_Lib_DogeItem(Id, Name, ImageUrl, Position, <150., 150.>)^"""
-    <script>
-    main()
-    {
-        while(True)
-        {
-            foreach(Event in PendingEvents)
-            {
-                if (Event.Type == CMlEvent::Type::MouseClick)
-                {
-                    SendCustomEvent("Doge.Section.Home", Text[]);
-                }
-            }
-            yield;
-        }
-    }
-    </script>
-    """;
-}
-
 Text Lib_Doges(Text[Text][] Data) {
     declare Text Output;
     declare Vec3 Position = <-150., 80., 0.>;
 
+    Output ^= Lib_DogeItem("0", "","http://placehold.it/300/09f/fff.png&text=Born%20a%20Doge#.png", Position, <50., 50.>);
+
+    Position.X += 55;
+
     foreach(DogeItem in Data) {
-        Output ^= Private_Lib_DogeItem(DogeItem["id"], DogeItem["name"], DogeItem["image_url"], Position, <50., 50.>);
+        Output ^= Lib_DogeItem(DogeItem["id"], DogeItem["name"], DogeItem["image_url"], Position, <50., 50.>);
         Position.X += 55;
         if(Position.X > 100.)
         {
@@ -54,7 +58,11 @@ Text Lib_Doges(Text[Text][] Data) {
             {
                 if (Event.Type == CMlEvent::Type::MouseClick)
                 {
-                    SendCustomEvent("Click", [Event.ControlId, Event.Control.DataAttributeGet("id")]);
+                    if(Event.Control.DataAttributeGet("id") == "0") {
+                        SendCustomEvent("Doge.Create", Text[]);
+                    } else {
+                        SendCustomEvent("Click", [Event.ControlId, Event.Control.DataAttributeGet("id")]);
+                    }
                 }
             }
             yield;

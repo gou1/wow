@@ -1,0 +1,35 @@
+#Include "Lib.Script.txt" as Lib
+
+Text Layers_Loading() {
+    return """
+    <video data="http://webmbassy.com/v/dog-doge-shaking-Shiba-Inu-wow-1396293701t.webm" sizen="180 180" valign="center" halign="center" play="1" looping="1" />
+    """;
+}
+
+Text Layers_Success() {
+    return """
+    <video data="http://webmbassy.com/v/doge-batman-plane-thumbs-up-dogecoin-1391878824C.webm" sizen="320 180" valign="center" halign="center" play="1" looping="0" />
+    """;
+}
+
+Text Layers_OneDoge(Text Id, Text Name, Text ImageUrl, Vec3 Position)
+{
+    return Lib::DogeItem(Id, Name, ImageUrl, Position, <150., 150.>)^"""
+    <script>
+    main()
+    {
+        while(True)
+        {
+            foreach(Event in PendingEvents)
+            {
+                if (Event.Type == CMlEvent::Type::MouseClick)
+                {
+                    SendCustomEvent("Doge.Section.Home", Text[]);
+                }
+            }
+            yield;
+        }
+    }
+    </script>
+    """;
+}

@@ -15,7 +15,7 @@ $root = (new \Manialib\XML\Node())
     ->setAttribute('version', '1')
     ->setAttribute('background', '1')
     ->appendChild(new \Manialib\Manialink\Elements\Timeout())
-    ->appendChild((new \Manialib\Manialink\Elements\Script())->setNodeValue($maniascript));
+    ->appendChild((new \Manialib\Manialink\Elements\Script())->setNodeValue('#RequireContext CMlApp'."\n".'#Include "MathLib" as MathLib'."\n".$maniascript));
 
 header('Content-Type: application/xml');
 echo $renderer->getXML($root);

@@ -27,7 +27,8 @@ class DogeType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Doge'
+            'data_class' => 'AppBundle\Entity\Doge',
+            'csrf_protection' => false,
         ));
     }
 
@@ -36,6 +37,6 @@ class DogeType extends AbstractType
      */
     public function getName()
     {
-        return 'appbundle_doge';
+        return '';
     }
 }

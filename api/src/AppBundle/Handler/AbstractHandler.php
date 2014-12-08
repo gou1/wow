@@ -57,7 +57,7 @@ abstract class AbstractHandler
             return $entity;
         }
 
-        throw new InvalidArgumentException('Invalid submitted data');
+        throw new \InvalidArgumentException('Invalid submitted data "' . $form->getErrors().'"');
     }
 
     public function __construct($entityClass, $formTypeClass, ObjectManager $om, FormFactoryInterface $formFactory)

@@ -26,7 +26,7 @@ class Doge
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=75, unique=true)
+     * @ORM\Column(name="name", type="string", length=75)
      */
     private $name;
 

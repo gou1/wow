@@ -29,6 +29,7 @@ class WowSuchData implements FixtureInterface
             'call of doge' => 'http://i.imgur.com/hH9b49C.png',
             'the walking doge' => 'http://2prowriting.files.wordpress.com/2014/03/doge-walking.jpg',
         ];
+        $doges = [];
         foreach ($doges as $name => $imageUrl) {
             $doge = new Doge();
             $doge->setName($name);

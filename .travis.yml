@@ -5,6 +5,8 @@ php:
 before_script:
   - mysql -e 'create database wow;'
   - cd api && composer install --prefer-dist
+  - pwd
+  - ls -alh api/app/config
   - cp -f api/app/config/parameters.yml.travis api/app/config/parameters.yml
   - cd api && app/console doctrine:database:create --env=test
   - cd api && app/console doctrine:schema:create --env=test

@@ -12,4 +12,4 @@ before_script:
     - php app/console doctrine:schema:create
     - php app/console doctrine:fixtures:load -n
 script:
-     - cd api && phpunit -c app
+     - phpunit -c app

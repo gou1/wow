@@ -6,7 +6,6 @@ env:
     - SYMFONY_ENV="test"
 before_script:
     - cd api
-    - mysql -e 'create database wow;'
     - composer install --prefer-dist
     - cp -f app/config/parameters.yml.travis app/config/parameters.yml
     - php app/console doctrine:database:create

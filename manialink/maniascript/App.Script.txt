@@ -4,7 +4,7 @@
 #Include "Manialib/Event.Script.txt" as Event
 #Include "Manialib/Http.Script.txt" as Http
 #Include "Manialib/Xml.Script.txt" as Xml
-#Include "Lib.Script.txt" as Doge
+#Include "Lib.Script.txt" as Lib
 #Include "Layers.Script.txt" as Layers
 #Include "MathLib" as ML
 
@@ -20,11 +20,10 @@ main() {
     //Logger::SetLevelConfig(100, False);
     Logger::Info("WOW SUCH DOGE ----------------------------------------");
 
+    Layer.ManialinkPage = Layers::Loading();
     Event::DispatchCustomEvent("Doge.Section.Home");
 
     while(True) {
-
-
 
         foreach(Event in PendingEvents) {
 			switch(Event.Type) {
@@ -34,6 +33,7 @@ main() {
 							switch(Event.CustomEventData[0]) {
 								case "doge-details": {
                                     DogeRequestId = Http::GetAsync(ApiUrl^"/doges/"^Event.CustomEventData[1]^".xml");
+                                    Layer.ManialinkPage = Layers::Loading();
 								}
 							}
 						}
@@ -53,14 +53,17 @@ main() {
             switch(Event[0][0]) {
                 case "Doge.Section.Home": {
                     DogesRequestId = Http::GetAsync(ApiUrl^"/doges.xml");
+                    Layer.ManialinkPage = Layers::Loading();
+                }
+                case "Doge.Section.Details": {
+
                 }
                 case "Doge.Create": {
-                    declare Doge = Doge::RandomDoge();
+                    declare Doge = Lib::RandomDoge();
                     declare Json = """{
                         "name":"{{{Doge["name"]}}}", "imageUrl": "{{{Doge["image_url"]}}}"
                     }""";
                     DogeCreateId = Http::PostAsync(ApiUrl^"/doges.json", Json);
-
                     Layer.ManialinkPage = Layers::Loading();
                 }
                 case "Manialib.Http.Success": {
@@ -68,12 +71,13 @@ main() {
                         case DogesRequestId^"": {
                             declare _Doc = Xml::TextToXmlDocument(Event[1][1]);
                             declare _Data = Xml::NodeToArray2(_Doc.GetFirstChild("result"));
-                            Layer.ManialinkPage = Doge::Doges(_Data);
+                            Layer.ManialinkPage = Layers::Doges(_Data);
                         }
                         case DogeCreateId^"": {
                              Layer.ManialinkPage = Layers::Success();
-                             Event::DispatchCustomEvent("Doge.Section.Home");
-                             sleep(2500);
+                             //Event::DispatchCustomEvent("Doge.Section.Home");
+                             DogesRequestId = Http::GetAsync(ApiUrl^"/doges.xml");
+                             sleep(3500);
                         }
                         case DogeRequestId^"": {
                             declare _Doc = Xml::TextToXmlDocument(Event[1][1]);

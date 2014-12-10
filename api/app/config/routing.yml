@@ -2,6 +2,6 @@ NelmioApiDocBundle:
     resource: "@NelmioApiDocBundle/Resources/config/routing.yml"
     prefix:   /
 
-AppBundle:
-    resource: @AppBundle/Resources/config/routing.yml
+doge:
+    resource: AppBundle\Controller\DogeController
     type: rest

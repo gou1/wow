@@ -1,7 +1,0 @@
-default:
-    resource: AppBundle\Controller\DefaultController
-    type: rest
-
-doge:
-    resource: AppBundle\Controller\DogeController
-    type: rest

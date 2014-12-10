@@ -13,11 +13,4 @@ class DogeControllerTest extends WebTestCase
         $this->assertTrue($client->getResponse()->isSuccessful());
     }
 
-    public function testGetNewDoge()
-    {
-        $client = static::createClient();
-        $client->request('GET', '/doges/new');
-        $this->assertTrue($client->getResponse()->isSuccessful());
-    }
-
 }

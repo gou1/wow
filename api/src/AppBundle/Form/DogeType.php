@@ -16,8 +16,7 @@ class DogeType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('imageUrl')
-            ->add('Submit', 'submit')
+            ->add('image_url')
         ;
     }
     
@@ -28,7 +27,6 @@ class DogeType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class' => 'AppBundle\Entity\Doge',
-            'csrf_protection' => false,
         ));
     }
 

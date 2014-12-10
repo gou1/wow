@@ -7,6 +7,6 @@
 This is a sandbox to create an online service to manage Doge's in Maniaplanet.
 
 It exposes:
- - A REST Symfony2 API built with current best practices (FOSRestBundle, JMSSerializerBundle, NelmioApiDocBundle)
+ - A Symfony2 REST Level 2 API built with current best practices (FOSRestBundle, JMSSerializerBundle, NelmioApiDocBundle)
  - A Maniascript frontend to that api
  

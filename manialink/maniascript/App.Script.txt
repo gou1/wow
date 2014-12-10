@@ -61,7 +61,7 @@ main() {
                 case "Doge.Create": {
                     declare Doge = Lib::RandomDoge();
                     declare Json = """{
-                        "name":"{{{Doge["name"]}}}", "imageUrl": "{{{Doge["image_url"]}}}"
+                        "name":"{{{Doge["name"]}}}", "image_url": "{{{Doge["image_url"]}}}"
                     }""";
                     DogeCreateId = Http::PostAsync(ApiUrl^"/doges.json", Json);
                     Layer.ManialinkPage = Layers::Loading();

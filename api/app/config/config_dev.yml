@@ -46,3 +46,9 @@ assetic:
 
 #swiftmailer:
 #    delivery_address: me@example.com
+
+services:
+    app.listener.convert_to_html_response:
+        class: AppBundle\EventListener\ConvertToHtmlResponse
+        tags:
+        - { name: kernel.event_listener, event: kernel.response }

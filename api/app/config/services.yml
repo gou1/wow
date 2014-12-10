@@ -5,11 +5,6 @@ parameters:
 
 services:
 
-    app.listener.convert_to_html_response:
-        class: AppBundle\EventListener\ConvertToHtmlResponse
-        tags:
-        - { name: kernel.event_listener, event: kernel.response }
-
     #app.handler.abstract:
     #    class: AppBundle\Handler\AbstractHandler
     #    arguments:

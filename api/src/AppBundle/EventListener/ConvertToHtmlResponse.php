@@ -8,11 +8,6 @@ class ConvertToHtmlResponse
 {
     public function onKernelResponse(FilterResponseEvent $event)
     {
-
-        if($event->getRequest()->getPathInfo() == "/") {
-            return;
-        }
-
         if (!$event->isMasterRequest()) {
             return;
         }

@@ -3,5 +3,10 @@
         "manialib/xml": "4.0.*@dev",
         "manialib/manialink": "4.0.*@dev",
         "manialib/maniascript": "4.0.*@dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "": "src/"
+        }
     }
 }

@@ -5,8 +5,10 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Doge;
 use AppBundle\Handler\DogeHandler;
+use FOS\RestBundle\Controller\Annotations\QueryParam;
 use FOS\RestBundle\Controller\Annotations\Route;
 use FOS\RestBundle\Controller\FOSRestController;
+use FOS\RestBundle\Request\ParamFetcherInterface;
 use FOS\RestBundle\Util\Codes;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
@@ -25,10 +27,14 @@ class DogeController extends FOSRestController
 
     /**
      * @ApiDoc(resource=true, description="Lists the doges")
+     * @QueryParam(name="limit", nullable=true, requirements="\d+", )
+     * @QueryParam(name="offset", nullable=true, requirements="\d+", default="1")
      */
-    public function getDogesAction()
+    public function getDogesAction(ParamFetcherInterface $paramFetcher)
     {
-        return $this->getHandler()->getDoges();
+        $limit =  $paramFetcher->get('limit');
+        $offset = $paramFetcher->get('offset', false);
+        return $this->getHandler()->all($limit, $offset);
     }
 
     /**

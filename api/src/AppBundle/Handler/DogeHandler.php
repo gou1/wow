@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class DogeHandler extends AbstractHandler
 {
-    function getDoges($limit = null, $offset = null)
+    function all($limit = null, $offset = null)
     {
         return $this->repository->findBy([], ['id' => 'DESC'], $limit, $offset);
     }

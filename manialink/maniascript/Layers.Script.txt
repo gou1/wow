@@ -12,8 +12,7 @@ Text Private_Layers_DogeItem(Text Id, Text Name, Text ImageUrl, Vec3 Position, V
 
 Text Layers_Loading() {
     return """
-    <video data="http://webmbassy.com/v/dog-doge-shaking-Shiba-Inu-wow-1396293701t.webm" sizen="180 180" valign="center" halign="center" play="1" looping="1" />
-    <label posn="0 0 1" sizen="291 95" text="Loading" style="TextTitle2Blink" textsize="20" halign="center" valign="center"/>
+    <quad posn="-20 20 0" sizen="40 40" bgcolor="FFFA" style="Icons128x128_Blink" substyle="Vehicles"/>
     """;
 }
 
@@ -49,7 +48,7 @@ Text Layers_Doges(Text[Text][] Data) {
     declare Text Output;
     declare Vec3 Position = <-150., 80., 0.>;
 
-    Output ^= Private_Layers_DogeItem("0", "","http://placehold.it/300/09f/fff.png&text=Born%20a%20Doge#.png", Position, <50., 50.>);
+    Output ^= Private_Layers_DogeItem("0", "","http://placehold.it/300/09f/fff.png&text=Generate%20an%20Item#.png", Position, <50., 50.>);
 
     Position.X += 55;
 

@@ -1,5 +1,6 @@
 {
     "require": {
+        "symfony/http-foundation": "@stable",
         "manialib/xml": "4.0.*@dev",
         "manialib/manialink": "4.0.*@dev",
         "manialib/maniascript": "4.0.*@dev"

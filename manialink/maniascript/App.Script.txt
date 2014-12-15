@@ -14,8 +14,8 @@ main() {
     declare Ident DogeRequestId;
     declare Ident DogeCreateId;
 
-    //Logger::SetLevelConfig(100, False);
-    Logger::Info("WOW SUCH DOGE ----------------------------------------");
+    Logger::SetLevelConfig(100, False);
+    Logger::Info("----------------------------------------");
 
     Layer.ManialinkPage = Layers::Loading();
     Event::DispatchCustomEvent("Doge.Section.Home");
@@ -72,9 +72,8 @@ main() {
                         }
                         case DogeCreateId^"": {
                              Layer.ManialinkPage = Layers::Success();
-                             //Event::DispatchCustomEvent("Doge.Section.Home");
                              DogesRequestId = Http::GetAsync(ApiUrl^"/doges.xml");
-                             sleep(3500);
+                             sleep(4000);
                         }
                         case DogeRequestId^"": {
                             declare _Doc = Xml::TextToXmlDocument(Event[1][1]);

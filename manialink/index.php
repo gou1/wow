@@ -1,5 +1,9 @@
 <?php
 
+use Symfony\Component\HttpFoundation\Request;
+
 require_once __DIR__.'/vendor/autoload.php';
 
-echo new App('http://max/wow/api/web');
+$request = Request::createFromGlobals();
+
+echo new App($request->getUriForPath('/../api/web').'');
